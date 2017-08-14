@@ -15,4 +15,4 @@ router.post('/', chatController.create);
 router.put('/:id', chatController.update);
 router.delete('/:id', chatController.delete);
 
-export default router;
+module.exports = router;

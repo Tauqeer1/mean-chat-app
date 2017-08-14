@@ -13,7 +13,7 @@ let io = require('socket.io')(server);
 
 require('./server/services/socket')(io);
 
-// const userRoutes = require('./server/api')
+const chatRoutes = require('./server/api/chat');
 
 
 mongoose.connect(config.mongoURL);
@@ -35,7 +35,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 // Set our api routes
-// app.use('/api', api);
+app.use('/api/chats', chatRoutes);
 
 // Catch all other routes and return the index file
 app.get('*', (req, res) => {
@@ -45,7 +45,8 @@ app.get('*', (req, res) => {
 /**
  * Get port from environment and store in Express.
  */
-const port = process.env.PORT || '4000';
+const port = process.env.PORT || '3000';
+
 app.set('port', port);
 
 
